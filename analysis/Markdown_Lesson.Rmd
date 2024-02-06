@@ -139,3 +139,70 @@ Etherpad - how do you collaborate and share documents now?
 
 How do you integrate figures and statistical analyses into writing?
 
+Open up Github in your browser, log in
+
+Open up terminal
+
+Navigate to our lesson directory
+
+git status - error (good!)
+
+First, we're going to *configure* some of our Git settings
+
+
+git config --global user.name "Gus Pendleton"
+git config --global user.email "guspendleton@gmail.com"
+
+Email should be the same one you use for github!
+
+git config --global core.editor = "nano -w"
+
+git config --global init.defaultBranch main
+
+# Okay, done setting up. Let's initialize a git repo
+
+MAKE SURE YOU ARE IN THE PROJECT DIRECTORY
+git init
+
+ls -a
+
+Discuss .git folder - this is something we DONT TOUCH
+
+git status
+
+If necessary
+
+git checkout -b main
+
+Do not want to include git repos inside of git repos
+
+We're about to start tracking our files. But sometimes, there's things we don't want to track:
+1. Private information
+2. Big files
+3. Temporary or user-specific files
+
+nano .gitignore
+.Rproj_user/
+.DS_Store
+
+Ready to add a change! 
+
+git add Markdown_Lesson.Rproj
+
+git status
+
+git add .gitignore
+
+git commit -m "initialized repo"
+
+git add data/
+
+git commit -m "Added data file"
+
+git add .
+
+git commit -m "Added analysis folder"
+
+Go back and add some lines to our markdown
+Now we're tracking with git!
+
