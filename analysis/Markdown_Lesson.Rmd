@@ -1,0 +1,141 @@
+---
+title: "RMarkdown Lesson Plan"
+author: "Gus Pendleton"
+date: "2024-02-06"
+output: pdf_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Set-up
+
+Make new RMarkdown document. Discuss yaml header, code chunk, and prose
+
+Save RMarkdown document in analysis folder
+
+Confirm everyone is in Source mode
+
+```{r reading-in-data}
+gapminder_df <- read.csv("data/gapminder.csv")
+
+getwd()
+```
+
+Discuss knitting directory - knitting chunks might have a different working directory than your r session!
+
+Discuss chunk output in console vs. in document - look at yaml header
+
+
+Assign read.csv to gapminder_df
+
+# Adding new prose with markdown settings
+
+## Headers
+
+### Keep getting smaller
+
+#### As we add hash tags
+
+Point out how we can navigate document
+
+We can make lists with asterisks or hyphens
+
+List 1:
+
+* Item 1
+* Item 2
+* Item 3
+
+List 2:
+
+- Other Item 1
+- Other Item 2
+
+We can make numbered list with numbers:
+
+1. Numbered thing 1
+2. Numbered thing 2
+
+And we can make more complex lists:
+
+1. Numbered thing 1
+    * Sub list
+    * Sub list
+2. Numbered thing 2
+
+We can make text **bold** or *italic*
+
+We can incorporate greek symbols like $\mu$ or $\Delta$
+
+We can make [hyperlinks](https://anvilproject.org/guides/content/creating-links)
+
+Knit again
+
+# Let's insert another R chunk
+
+```{r median-population}
+# Find the median population
+median(gapminder_df$pop)
+```
+
+This is okay, but especially if people can't read understand our code, it's not that helpful. It would be better if we contextualized these numbers in writing. 
+
+```{r calculating-summaries, echo = FALSE}
+total_obs <- nrow(gapminder_df)
+
+median_pop <- median(gapminder_df$pop)
+```
+
+Over `r total_obs` observations, there was a median population of `r median_pop/10e6` million people. 
+
+# Let's make a plot
+
+```{r plotting-our-data, warning = FALSE}
+library(ggplot2)
+
+ggplot(gapminder_df, aes(x = year, y = lifeExp, group = country, color = continent)) + 
+  geom_line() + 
+  scale_y_log10() + 
+  scale_x_continuous(limits = c(1997, 2007))
+  #+ geom_bar()
+```
+
+Adding information to code chunks
+
+First add echo = FALSE
+
+Next, add eval = FALSE
+
+Next, add warning = FALSE
+
+Next, simulate what happens when you have an error - can't knit
+
+Make another type of plot
+
+```{r histogram-plot, message = FALSE, fig.width = 10}
+ggplot(gapminder_df, aes(x = pop)) + 
+  geom_histogram()
+
+```
+
+Next, add message = FALSE
+
+Finally, change figure width
+
+Add some new yaml code
+code_folding: hide
+toc: yes
+toc_float: yes
+
+# Transition to git lesson
+
+Why do we use  version control?
+
+Etherpad - how do you collaborate and share documents now?
+
+How do you integrate figures and statistical analyses into writing?
+
