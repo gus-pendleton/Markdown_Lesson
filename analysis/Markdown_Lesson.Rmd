@@ -204,5 +204,17 @@ git add .
 git commit -m "Added analysis folder"
 
 Go back and add some lines to our markdown
-Now we're tracking with git!
+Now we're tracking with not just git!
+
+git log
+
+git diff
+
+git add .
+
+Try without a commit message
+git commit
+
+Added some bad lines
+
 
