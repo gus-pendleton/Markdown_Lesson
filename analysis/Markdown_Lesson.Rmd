@@ -131,6 +131,10 @@ code_folding: hide
 toc: yes
 toc_float: yes
 
+If we have time:
+
+Visual view and tables
+
 # Transition to git lesson
 
 Why do we use  version control?
@@ -204,7 +208,8 @@ git add .
 git commit -m "Added analysis folder"
 
 Go back and add some lines to our markdown
-Now we're tracking with not just git!
+Now we're tracking with git!
+
 
 git log
 
@@ -216,5 +221,77 @@ Try without a commit message
 git commit
 
 Added some bad lines
+
+If we have time:
+
+git checkout HEAD analysis/Markdown_Lesson.Rmd
+
+vs
+
+git revert [commit number]
+
+# Connecting to Remote
+
+log into github
+
+highly highly recommend it's the same name as the folder on your computer!
+
+Don't select any other options
+
+We need to connect our **local** to our **remote**
+
+Make sure to click ssh
+
+git remote add origin git@github.com:gus-pendleton/Markdown_Lesson.git
+
+git remote -v
+
+SSH keys - public = padlock, private = key
+
+ls -al ~/.ssh
+
+Totally okay if there is an error!
+
+ssh-keygen -t ed25519 -C "guspendleton@gmail.com"
+
+OR: 
+
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+Just press enter, don't type anything
+
+Also press enter, don't enter a passcode
+
+And we want to see a key fingerprint
+
+ls -al ~/.ssh
+
+cat ~/.ssh/id_ed25519.pub
+
+Settings -> SSH and GPG keys -> New SSH key
+
+Paste in key, starting with ssh-ed25519
+
+ssh -T git@github.com
+
+git push origin main
+
+git pull origin main
+
+Make README.md on Github
+
+git pull origin main
+
+IF WE HAVE TIME
+
+Make separate folder for "Practice_Cloning"
+
+git clone another classmate's git repo
+
+
+IF WE HAVE TIME
+
+Show git inside R studio
+
 
 
